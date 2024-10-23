@@ -29,7 +29,7 @@ app.post("/", async (req, res) => {
     const response = await axios.get(`https://bored-api.appbrewery.com/filter?type=${req.body.type}&participants=${req.body.participants}`);
     const result = response.data;
     console.log(result);
-    res.render("index.ejs", { data: result });
+    res.render("index.ejs", { data: result[Math.floor(Math.random() * result.length)] });
   } catch (error) {
     console.error("Failed to make request:", error.message);
     res.render("index.ejs", {
